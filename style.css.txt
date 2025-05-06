@@ -1,0 +1,71 @@
+body {
+  background-color: #111;
+  color: #f4f4f4;
+  font-family: 'Courier New', Courier, monospace;
+  padding: 20px;
+}
+
+#game-container {
+  max-width: 800px;
+  margin: auto;
+  background-color: #222;
+  padding: 20px;
+  border: 1px solid #555;
+  border-radius: 10px;
+}
+
+#story-text {
+  white-space: pre-line;
+  margin-bottom: 20px;
+}
+
+input, button {
+  padding: 10px;
+  font-size: 16px;
+  width: calc(100% - 22px);
+  margin-top: 10px;
+}
+📄 3. game.js
+Bir son metin belgesi daha oluştur, adını game.js yap. İçine şu kodları yapıştır:
+
+javascript
+Kopyala
+Düzenle
+let storyText = document.getElementById("story-text");
+let playerInput = document.getElementById("player-input");
+
+let currentScene = 0;
+
+const scenes = [
+  `Çölün ortasındasın. Parçalanmış hava gemisi enkazı arkanızda, pusulan doğuyu gösteriyor. Kumlar titreşiyor ve yerden bir çöl kertenkelesi fırlıyor!
+
+  Kılıcın elinde, birkaç saniyen var.
+
+  Ne yapıyorsun?`,
+  
+  `Kılıcını çektin ve yaratığa doğru hamle yaptın! Keskin bir vuruşla yaratığı geri püskürttün ama omzundan hafif bir sıyrık aldın. Pusulan hala doğuyu gösteriyor.
+
+  İlerlemeye hazır mısın?`,
+  
+  `Kumlar arasında yürümeye başladın. Güneş yükseliyor, haritadaki semboller parlamaya başlıyor. Ufukta kayalık tepe ve bir yapı görünmeye başladı...
+
+  Maceran yeni başlıyor.`
+];
+
+function submitInput() {
+  const input = playerInput.value.trim().toLowerCase();
+
+  if (input.length === 0) return;
+
+  storyText.innerText += `\n> ${input}\n`;
+
+  // Basit sahne ilerlemesi
+  currentScene++;
+  if (currentScene < scenes.length) {
+    storyText.innerText += `\n${scenes[currentScene]}\n`;
+  } else {
+    storyText.innerText += `\n--- Oyun Bitti (Devamı geliştirilebilir) ---`;
+  }
+
+  playerInput.value = "";
+}

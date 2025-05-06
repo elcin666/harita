@@ -1,0 +1,38 @@
+let storyText = document.getElementById("story-text");
+let playerInput = document.getElementById("player-input");
+
+let currentScene = 0;
+
+const scenes = [
+  `Çölün ortasındasın. Parçalanmış hava gemisi enkazı arkanızda, pusulan doğuyu gösteriyor. Kumlar titreşiyor ve yerden bir çöl kertenkelesi fırlıyor!
+
+  Kılıcın elinde, birkaç saniyen var.
+
+  Ne yapıyorsun?`,
+  
+  `Kılıcını çektin ve yaratığa doğru hamle yaptın! Keskin bir vuruşla yaratığı geri püskürttün ama omzundan hafif bir sıyrık aldın. Pusulan hala doğuyu gösteriyor.
+
+  İlerlemeye hazır mısın?`,
+  
+  `Kumlar arasında yürümeye başladın. Güneş yükseliyor, haritadaki semboller parlamaya başlıyor. Ufukta kayalık tepe ve bir yapı görünmeye başladı...
+
+  Maceran yeni başlıyor.`
+];
+
+function submitInput() {
+  const input = playerInput.value.trim().toLowerCase();
+
+  if (input.length === 0) return;
+
+  storyText.innerText += `\n> ${input}\n`;
+
+  // Basit sahne ilerlemesi
+  currentScene++;
+  if (currentScene < scenes.length) {
+    storyText.innerText += `\n${scenes[currentScene]}\n`;
+  } else {
+    storyText.innerText += `\n--- Oyun Bitti (Devamı geliştirilebilir) ---`;
+  }
+
+  playerInput.value = "";
+}

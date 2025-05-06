@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Kayıp Güneşin Haritası</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="game-container">
+    <h1>Kayıp Güneşin Haritası</h1>
+    <div id="story-text"></div>
+    <input type="text" id="player-input" placeholder="Ne yapmak istiyorsun?">
+    <button onclick="submitInput()">Gönder</button>
+  </div>
+  <script src="game.js"></script>
+</body>
+</html>
